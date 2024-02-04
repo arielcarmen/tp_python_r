@@ -2,19 +2,18 @@ guess_the_number_game <- function() {
   number_to_guess <- sample(1:100, 1)
   attempts <- 0
 
-  cat("Welcome to the Guess the Number game!\n")
-  cat("Guess the number between 1 and 100.\n")
+  cat("Vous devez choisir un nombre entre 1 et 100.\n")
 
   while (TRUE) {
-    user_guess <- as.integer(readline("Enter your guess: "))
+    user_guess <- as.integer(readline("Entrez votre choix: "))
     attempts <- attempts + 1
 
     if (user_guess < number_to_guess) {
-      cat("Too small! Try again.\n")
+      cat("Trop bas! Réessayez.\n")
     } else if (user_guess > number_to_guess) {
-      cat("Too large! Try again.\n")
+      cat("Trop bas! Réessayez.\n")
     } else {
-      cat(sprintf("Congratulations! You guessed the number in %d attempts.\n", attempts))
+      cat(sprintf("Félicitations! Vous avez deviné le mot après %d tentatives.\n", attempts))
       break
     }
   }

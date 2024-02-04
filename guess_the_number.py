@@ -4,19 +4,19 @@ def guess_the_number_game():
     number_to_guess = random.randint(1, 100)
     attempts = 0
 
-    print("Welcome to the Guess the Number game!")
-    print("Guess the number between 1 and 100.")
+    print("Nouvelle partie de Plus ou moins!")
+    print("Vous devez deviner un nombre entre 0 et 100.")
 
     while True:
-        user_guess = int(input("Enter your guess: "))
+        user_guess = int(input("Entrez votre choix: "))
         attempts += 1
 
         if user_guess < number_to_guess:
-            print("Too small! Try again.")
+            print("Trop bas! Réessayez.")
         elif user_guess > number_to_guess:
-            print("Too large! Try again.")
+            print("Trop haut! Réessayez.")
         else:
-            print(f"Congratulations! You guessed the number in {attempts} attempts.")
+            print(f"Félicitations! vous avez trouvé le mot après {attempts} tentatives.")
             break
 
 if __name__ == "__main__":
