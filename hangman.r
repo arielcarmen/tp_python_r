@@ -21,40 +21,40 @@ hangman <- function() {
   max_attempts <- 6
   attempts <- 0
 
-  cat("Welcome to the Hangman game!\n")
+  cat("Jeu du pendu, nouvelle partie\n")
 
   while (attempts < max_attempts) {
     current_hidden_word <- display_hidden_word(word_to_guess, correct_letters)
-    cat("Current word: ", current_hidden_word, "\n")
+    cat("Mot à deviner: ", current_hidden_word, "\n")
 
-    guess <- tolower(readline("Guess a letter: "))
+    guess <- tolower(readline("Entrez une lettre: "))
 
     if (nchar(guess) != 1 || !grepl("[a-z]", guess)) {
-      cat("Please enter a single valid letter.\n")
+      cat("Entrez une lettre de l'alphabet.\n")
       next
     }
 
     if (guess %in% correct_letters) {
-      cat("You've already guessed this letter. Try again.\n")
+      cat("Vous avez déja entré cette lettre! Réessayez.\n")
       next
     }
 
     if (guess %in% strsplit(word_to_guess, NULL)[[1]]) {
-      cat("Good guess!\n")
+      cat("Bien joué!\n")
       correct_letters <- c(correct_letters, guess)
     } else {
-      cat("Wrong guess. Try again.\n")
+      cat("Mauvais choix. Réessayez.\n")
       attempts <- attempts + 1
     }
 
     if (length(unique(correct_letters)) == length(unique(strsplit(word_to_guess, NULL)[[1]]))) {
-      cat("Congratulations, you guessed the word:", word_to_guess, "\n")
+      cat("Félicitation, vous avez trouvé le mot:", word_to_guess, "\n")
       break
     }
   }
 
   if (attempts == max_attempts) {
-    cat("Sorry, you've reached the maximum number of attempts. The word was:", word_to_guess, "\n")
+    cat("GAME OVER! Le mot était:", word_to_guess, "\n")
   }
 }
 

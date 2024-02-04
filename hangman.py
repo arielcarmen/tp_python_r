@@ -19,35 +19,35 @@ def hangman():
     max_attempts = 6
     attempts = 0
 
-    print("Welcome to the Hangman game!")
+    print("Nouvelle partie :")
 
     while attempts < max_attempts:
         current_hidden_word = display_hidden_word(word_to_guess, correct_letters)
-        print("Current word: ", current_hidden_word)
+        print("Mot à deviner: ", current_hidden_word)
 
-        guess = input("Guess a letter: ").lower()
+        guess = input("Entrez une lettre: ").lower()
 
         if len(guess) != 1 or not guess.isalpha():
-            print("Please enter a single valid letter.")
+            print("Entrez une lettre de l'alphabet!")
             continue
 
         if guess in correct_letters:
-            print("You've already guessed this letter. Try again.")
+            print("Vous avez déja entré cette lettre. Réessayez.")
             continue
 
         if guess in word_to_guess:
-            print("Good guess!")
+            print("Correct!")
             correct_letters.append(guess)
         else:
-            print("Wrong guess. Try again.")
+            print("Mauvais choix. Réessayez.")
             attempts += 1
 
         if set(correct_letters) == set(word_to_guess):
-            print("Congratulations, you guessed the word:", word_to_guess)
+            print("Félictations, vous avez trouvé:", word_to_guess)
             break
 
     if attempts == max_attempts:
-        print("Sorry, you've reached the maximum number of attempts. The word was:", word_to_guess)
+        print("GAME OVER. Le mot était:", word_to_guess)
 
 if __name__ == "__main__":
     hangman()
